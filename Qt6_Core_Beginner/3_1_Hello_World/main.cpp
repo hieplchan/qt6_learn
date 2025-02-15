@@ -1,22 +1,55 @@
 #include <QCoreApplication>
 #include <QDebug>
 
+void testLog()
+{
+    qDebug() << "Debug";
+    qWarning() << "Warning";
+    qCritical() << "Critical";
+    qFatal("Test crash");
+}
+
+#pragma region Func Return
+// Qt dont allow copy constructor
+// QObject getObject(QString name)
+// {
+//     QObject o;
+//     o.setObjectName(name);
+//     return o;
+// }
+
+// QObject& getRef(QString name)
+// {
+//     QObject o; // on stack
+//     o.setObjectName(name);
+//     return o; // deleted
+// }
+
+QObject* getPtr(QString name)
+{
+    QObject* o = new QObject(); // on heap
+    o->setObjectName(name);
+    return o;
+}
+#pragma endregion
+
+void testFuncReturn()
+{
+    // QObject o1 = getObject("ByVal");
+    // QObject o2 = getRef("ByRef");
+    QObject* o3 = getPtr("ByPtr");
+    qInfo() << o3->objectName();
+    delete o3;
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    // Set up code that uses the Qt event loop here.
-    // Call a.quit() or a.exit() to quit the application.
-    // A not very useful example would be including
-    // #include <QTimer>
-    // near the top of the file and calling
-    // QTimer::singleShot(5000, &a, &QCoreApplication::quit);
-    // which quits the application after 5 seconds.
-
-    // If you do not need a running Qt event loop, remove the call
-    // to a.exec() or use the Non-Qt Plain C++ Application template.
-
     qInfo() << "Hello World";
+
+    // testLog();
+    testFuncReturn();
 
     return a.exec();
 }
