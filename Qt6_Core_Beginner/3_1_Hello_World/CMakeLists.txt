@@ -14,6 +14,10 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(3_1_Hello_World
   main.cpp
+  animal.h animal.cpp
+  mammal.h mammal.cpp
+  dog.h dog.cpp
+  cat.h cat.cpp
 )
 target_link_libraries(3_1_Hello_World Qt${QT_VERSION_MAJOR}::Core)
 

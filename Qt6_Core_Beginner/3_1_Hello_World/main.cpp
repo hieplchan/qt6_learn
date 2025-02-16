@@ -1,6 +1,9 @@
 #include <QCoreApplication>
 #include <QDebug>
 
+#include "dog.h"
+#include "cat.h"
+
 void testLog()
 {
     qDebug() << "Debug";
@@ -31,7 +34,7 @@ QObject* getPtr(QString name)
     o->setObjectName(name);
     return o;
 }
-#pragma endregion
+#pragma endregion Func Return
 
 void testFuncReturn()
 {
@@ -42,14 +45,29 @@ void testFuncReturn()
     delete o3;
 }
 
+void testInheritance()
+{
+    Dog dog;
+
+    dog.bark();
+    qDebug() << dog.hasBackBone();
+    qDebug() << dog.isAlive();
+
+    Cat cat;
+    cat.meow();
+    qDebug() << cat.hasBackBone();
+    qDebug() << cat.isAlive();
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    qInfo() << "Hello World";
+    // qInfo() << "Hello World";
 
     // testLog();
-    testFuncReturn();
+    // testFuncReturn();
+    testInheritance();
 
     return a.exec();
 }
