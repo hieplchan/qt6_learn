@@ -5,3 +5,8 @@ Cat::Cat(QObject *parent)
 {
     qDebug() << this << " constructed";
 }
+
+void Cat::speak()
+{
+    qDebug() << "meow";
+}

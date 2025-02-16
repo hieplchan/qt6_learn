@@ -16,6 +16,8 @@ public:
         qDebug() << "Meow meow";
     }
 
+    void speak();
+
 signals:
 };
 

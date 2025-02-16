@@ -22,6 +22,7 @@ add_executable(3_1_Hello_World
   Freezer.h
   Microwave.h
   appliance.h appliance.cpp
+  lion.h lion.cpp
 )
 target_link_libraries(3_1_Hello_World Qt${QT_VERSION_MAJOR}::Core)
 

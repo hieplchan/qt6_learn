@@ -3,6 +3,7 @@
 
 #include "dog.h"
 #include "cat.h"
+#include "lion.h"
 
 #include "appliance.h"
 
@@ -59,6 +60,9 @@ void testInheritance()
     cat.meow();
     qDebug() << cat.hasBackBone();
     qDebug() << cat.isAlive();
+
+    Lion lion;
+    lion.speak();
 }
 
 void testInterface()
@@ -77,8 +81,8 @@ int main(int argc, char *argv[])
 
     // testLog();
     // testFuncReturn();
-    // testInheritance();
-    testInterface();
+    testInheritance();
+    // testInterface();
 
     return a.exec();
 }
