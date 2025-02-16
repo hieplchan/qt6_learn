@@ -1,12 +1,12 @@
-#include "animal.h"
+#include "testobjecttree.h"
 
-Animal::Animal(QObject *parent)
+TestObjectTree::TestObjectTree(QObject *parent)
     : QObject{parent}
 {
     qDebug() << this << " constructed";
 }
 
-Animal::~Animal()
+TestObjectTree::~TestObjectTree()
 {
     qDebug() << this << " deconstructed";
 }

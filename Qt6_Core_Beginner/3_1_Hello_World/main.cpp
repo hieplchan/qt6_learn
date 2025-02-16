@@ -4,8 +4,8 @@
 #include "dog.h"
 #include "cat.h"
 #include "lion.h"
-
 #include "appliance.h"
+#include "testobjecttree.h"
 
 void testLog()
 {
@@ -73,6 +73,13 @@ void testInterface()
     qDebug() << appliance.cook();
 }
 
+void testObjectTree(QObject* a)
+{
+    TestObjectTree* parent = new TestObjectTree(a);
+    parent->animal = new Animal(parent);
+    delete parent; // child (animal) will be automatically deleted
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -81,8 +88,9 @@ int main(int argc, char *argv[])
 
     // testLog();
     // testFuncReturn();
-    testInheritance();
+    // testInheritance();
     // testInterface();
+    testObjectTree(&a);
 
     return a.exec();
 }

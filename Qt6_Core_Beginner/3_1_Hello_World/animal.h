@@ -9,6 +9,7 @@ class Animal : public QObject
     Q_OBJECT
 public:
     explicit Animal(QObject *parent = nullptr);
+    ~Animal();
 
     bool isAlive()
     {
