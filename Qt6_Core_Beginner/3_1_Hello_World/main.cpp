@@ -4,6 +4,8 @@
 #include "dog.h"
 #include "cat.h"
 
+#include "appliance.h"
+
 void testLog()
 {
     qDebug() << "Debug";
@@ -59,6 +61,14 @@ void testInheritance()
     qDebug() << cat.isAlive();
 }
 
+void testInterface()
+{
+    Appliance appliance;
+    qDebug() << appliance.grill();
+    qDebug() << appliance.freeze();
+    qDebug() << appliance.cook();
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -67,7 +77,8 @@ int main(int argc, char *argv[])
 
     // testLog();
     // testFuncReturn();
-    testInheritance();
+    // testInheritance();
+    testInterface();
 
     return a.exec();
 }

@@ -18,6 +18,10 @@ add_executable(3_1_Hello_World
   mammal.h mammal.cpp
   dog.h dog.cpp
   cat.h cat.cpp
+  Toaster.h
+  Freezer.h
+  Microwave.h
+  appliance.h appliance.cpp
 )
 target_link_libraries(3_1_Hello_World Qt${QT_VERSION_MAJOR}::Core)
 
