@@ -3,6 +3,7 @@
 #include <QDate>
 #include <QTime>
 #include <QDateTime>
+#include <QVariant>
 
 void testType()
 {
@@ -81,6 +82,35 @@ void testString()
     testPassByValueString(full);
 }
 
+void testPassQVariant(QVariant value) // COPY: QVariant is not QObject
+{
+    qInfo() << value;
+
+    int convertedValue = 0;
+    bool isConvertedSuccess = false;
+
+    convertedValue = value.toInt(&isConvertedSuccess);
+    if (isConvertedSuccess)
+    {
+        qInfo() << "INT" << convertedValue;
+    }
+    else
+    {
+        qInfo() << "Can not converted to int" << value;
+    }
+}
+
+void testQVariant()
+{
+    qInfo() << __FUNCTION__;
+
+    QVariant test1 = 1;
+    testPassQVariant(test1);
+
+    QVariant test2 = "Hello World";
+    testPassQVariant(test2);
+}
+
 void testQByeArray()
 {
     qInfo() << __FUNCTION__;
@@ -112,6 +142,8 @@ int main(int argc, char *argv[])
     testString();
 
     testQByeArray();
+
+    testQVariant();
 
     return a.exec();
 }
