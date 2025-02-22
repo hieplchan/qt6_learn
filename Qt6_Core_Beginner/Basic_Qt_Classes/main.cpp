@@ -51,6 +51,36 @@ void testDateTime()
     }
 }
 
+void testPassByValueString(QString s) // COPY: QString is not QObject
+{
+    qInfo() << s;
+}
+
+void testString()
+{
+    qInfo() << __FUNCTION__;
+
+    QString name = "Hiep Chan";
+    qInfo() << name;
+    qInfo() << name.mid(1, 3);
+    qInfo() << name.insert(0, "Mr. ");
+    qInfo() << name.split(" ");
+
+    int index = name.indexOf(" ");
+    if (index > -1)
+    {
+        qInfo() << name.remove(0, index).trimmed();
+    }
+
+    QString title = "Teacher";
+    QString full = name.trimmed() + " " + title;
+    qInfo() << full;
+
+    qInfo() << full.toUtf8();
+
+    testPassByValueString(full);
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -58,6 +88,8 @@ int main(int argc, char *argv[])
     testType();
 
     testDateTime();
+
+    testString();
 
     return a.exec();
 }
