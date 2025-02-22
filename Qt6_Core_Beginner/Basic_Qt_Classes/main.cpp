@@ -81,6 +81,26 @@ void testString()
     testPassByValueString(full);
 }
 
+void testQByeArray()
+{
+    qInfo() << __FUNCTION__;
+
+    QString greeting = "Hello World!!!";
+    QByteArray buffer(greeting.toUtf8());
+    buffer.append("AAA");
+    qInfo() << buffer;
+
+    qInfo() << buffer.rightJustified(20, '.');
+    qInfo() << buffer.at(buffer.length() - 1);
+
+    QString modified(buffer); // convert back to string
+    qInfo() << modified;
+
+    // Basic encode/decode
+    qInfo() << buffer.toBase64();
+    qInfo() << buffer.toHex();
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -90,6 +110,8 @@ int main(int argc, char *argv[])
     testDateTime();
 
     testString();
+
+    testQByeArray();
 
     return a.exec();
 }
