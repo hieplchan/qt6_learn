@@ -4,6 +4,7 @@
 #include <QTime>
 #include <QDateTime>
 #include <QVariant>
+#include <QtAlgorithms>
 
 void testType()
 {
@@ -169,6 +170,46 @@ void testQList()
     }
 }
 
+#pragma region QMapTest
+struct Cat {
+    QString name;
+    int age;
+};
+
+typedef QMap<QString, Cat*> catMap;
+
+void printCats(catMap cats)
+{
+    foreach (QString key, cats.keys())
+    {
+        Cat* cat = cats.value(key);
+        qInfo() << key << cat->name << "is Age: " << cat->age;
+    }
+}
+
+void testQMap()
+{
+    qInfo() << __FUNCTION__;
+
+    catMap cats;
+    for (int i = 0; i < 5; i++)
+    {
+        QString name = "Cat: " + QString::number(i);
+        Cat* cat = new Cat();
+        cat->name = name;
+        cat->age = i;
+        cats.insert(name, cat);
+    }
+    printCats(cats);
+
+    qDeleteAll(cats.values()); // free all Cat*, not the map containers itself
+    qInfo() << cats.count();
+
+    cats.clear();
+    qInfo() << cats.count();
+}
+#pragma endregion QMapTest
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -187,6 +228,8 @@ int main(int argc, char *argv[])
 
     /////// QVector is alias of QList in Qt6
     testQList();
+
+    testQMap();
 
     return a.exec();
 }
