@@ -133,6 +133,8 @@ void testQByeArray()
 
 void testQStringList()
 {
+    qInfo() << __FUNCTION__;
+
     QString data = "Hello world how are you";
     QStringList lst = data.split(" ");
 
@@ -152,6 +154,21 @@ void testQStringList()
     }
 }
 
+void testQList()
+{
+    qInfo() << __FUNCTION__;
+
+    QList<int> list({3, 99, 45, 2});
+    // list.append("0");
+    list.append(0);
+    list.remove(1);
+
+    foreach (int i, list)
+    {
+        qInfo() << i;
+    }
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -167,6 +184,8 @@ int main(int argc, char *argv[])
     testQVariant();
 
     testQStringList();
+
+    testQList();
 
     return a.exec();
 }
