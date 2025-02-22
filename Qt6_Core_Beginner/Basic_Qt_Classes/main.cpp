@@ -185,6 +185,7 @@ int main(int argc, char *argv[])
 
     testQStringList();
 
+    /////// QVector is alias of QList in Qt6
     testQList();
 
     return a.exec();
