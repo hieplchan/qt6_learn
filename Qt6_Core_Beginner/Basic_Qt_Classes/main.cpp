@@ -131,6 +131,27 @@ void testQByeArray()
     qInfo() << buffer.toHex();
 }
 
+void testQStringList()
+{
+    QString data = "Hello world how are you";
+    QStringList lst = data.split(" ");
+
+    foreach (QString str, lst)
+    {
+        qInfo() << str;
+    }
+
+    lst.sort(Qt::CaseInsensitive);
+    qInfo() << lst;
+
+    QString myVar = "Hello";
+    if (lst.contains(myVar))
+    {
+        int index = lst.indexOf(myVar);
+        qInfo() << lst.value(index);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -144,6 +165,8 @@ int main(int argc, char *argv[])
     testQByeArray();
 
     testQVariant();
+
+    testQStringList();
 
     return a.exec();
 }
