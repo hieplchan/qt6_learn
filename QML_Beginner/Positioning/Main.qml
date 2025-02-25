@@ -19,8 +19,8 @@ Window {
             label.text = Math.round(x) + "x" + Math.round(y)
         }
 
-        x: 100
-        y: 100
+        x: 0
+        y: 0
         // anchors.centerIn: parent // anchors always win
 
         Component.onCompleted: update()
@@ -37,5 +37,20 @@ Window {
             anchors.fill: parent
             drag.target: parent
         }
+    }
+
+    MyShape {
+        color: "red"
+        x: 100
+    }
+
+    MyShape {
+        color: "green"
+        x: 150
+    }
+
+    MyShape {
+        color: "blue"
+        x: 200
     }
 }
