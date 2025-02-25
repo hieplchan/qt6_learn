@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.16)
 project(QML_1 VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
 
@@ -17,6 +20,7 @@ qt_add_qml_module(appQML_1
     VERSION 1.0
     QML_FILES
         Main.qml
+        RESOURCES qml.qrc
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

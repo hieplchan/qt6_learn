@@ -33,6 +33,18 @@ Window {
         // }
     }
 
+    Image {
+        id: myLocalImage
+
+        source: "qrc:/images/qt_icon.png"
+        // source: "https://www.shareicon.net/data/2015/09/16/101908_qt_512x512.png"
+        fillMode: Image.PreserveAspectFit
+
+        width: 100
+        height: 100
+        anchors.top: myimage.bottom
+    }
+
     TextInput {
         id: myInput
         text: "Hello World"
@@ -47,12 +59,44 @@ Window {
     }
 
     Rectangle {
+        id: rectTapHandler
         color: inputHandler.pressed ? "red" : "blue"
         width: 50
         height: 50
 
         TapHandler {
             id: inputHandler
+        }
+    }
+
+
+    Rectangle {
+        id: rectMouseArea
+        color: "green"
+        width: 50
+        height: 50
+
+        anchors.top: rectTapHandler.bottom
+
+        MouseArea {
+            id: myMouseAre
+
+            anchors.fill: parent
+
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            hoverEnabled: true
+
+            onClicked: {
+                console.log("Clicked: " + mouse.button)
+                if (mouse.button === Qt.LeftButton) parent.color = "blue"
+                if (mouse.button === Qt.RightButton) parent.color = "green"
+            }
+
+            onDoubleClicked: console.log("Double click: " + mouse.button)
+            onPositionChanged: console.log("Position X: " + mouseX + " Y: " + mouseY)
+
+            onEntered: parent.color = "orange"
+            onExited: parent.color = "black"
         }
     }
 }
