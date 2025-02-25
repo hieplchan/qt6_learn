@@ -39,18 +39,12 @@ Window {
         }
     }
 
-    MyShape {
-        color: "red"
-        x: 100
-    }
+    Column {
+        anchors.centerIn: parent
+        spacing: 2
 
-    MyShape {
-        color: "green"
-        x: 150
-    }
-
-    MyShape {
-        color: "blue"
-        x: 200
+        MyShape {color: "red"}
+        MyShape {color: "green"}
+        MyShape {color: "blue"}
     }
 }
